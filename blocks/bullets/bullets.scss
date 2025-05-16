@@ -101,9 +101,8 @@
   .content-inner {
     gap: 10px;
   }
-
-  .content-inner-1 .content-card {
-    width: calc(50% - 10px);
+  .content-inner-1 {
+    justify-content: space-between;
   }
   .content-inner-2 .content-card {
     width: calc(50% - 10px);
