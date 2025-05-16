@@ -182,8 +182,9 @@
     .social {
         gap: 10px;
     }
-    .footer-bttm ul {
-        /* gap: 5px; */
+    .footer-bttm {
+        text-align: center;
+       
     }
     .footer-right {
         flex-direction: column;

@@ -518,6 +518,11 @@ BG kontainer
   gap:50px;
 }
 
+.bttn-outline-orange, .bttn {
+  font-size: 14px!important;
+  line-height: 35px!important;
+  
+}
 }
 
 

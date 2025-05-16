@@ -156,27 +156,6 @@
   justify-content: flex-end;
 }
 
-/* 
-  @media only screen and (max-width: 991px) {
-      .timeline-items {
-          flex-direction: column;
-      }
-      .timeline-item {
-          align-items: flex-start;
-          width: 100%;
-          text-align: left;
-      }
-      .timeline-line {
-          position: absolute;
-          top: 0;
-          transform: translateY(-50%);
-          left: 0;
-          width: 10px;
-          height: 100%;
-          z-index: 1;
-      }
-  } */
-
 /* Mobile styles */
 @media (max-width: 991px) {
   .timeline {
@@ -259,8 +238,12 @@
 }
 
 @media (max-width: 767px) {
+  .timeline-area .header {
+    margin-bottom: 0;
+  }
   .timeline-area {
-    padding: var(--spacing) 0;
+    margin-bottom: 0;
+    padding-bottom: 0;
   }
 }
 
