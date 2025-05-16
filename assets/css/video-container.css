@@ -1,0 +1,20 @@
+.video-container-area {
+  padding: var(--spacing) 0;
+}
+
+.video-container iframe {
+  width: 100%;
+  border-radius: 3px;
+}
+
+@media only screen and (max-width: 991px) {
+  .video-container iframe {
+    height: 300px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .video-container-area {
+    padding: var(--spacing-mobile) 0;
+  }
+} 

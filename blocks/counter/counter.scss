@@ -1,0 +1,73 @@
+.single-counter {
+  width: 33.33%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.counterUp span {
+  font-size: var(--xxxl);
+  background-image: linear-gradient(107deg, #f08d0c 6%, #f0540c 100%);
+  font-size: var(--xxl);
+  font-weight: 600;
+  font-stretch: normal;
+  line-height: 1;
+  text-align: center;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.counter + span {
+  font-size: var(--lg);
+  font-weight: normal;
+  line-height: 1;
+  margin-left: 5px;
+}
+
+.counter-od {
+  font-size: 28px !important;
+  font-weight: normal !important;
+  line-height: 1;
+  margin-right: 5px;
+}
+
+.counter-text {
+  margin-top: 15px;
+  max-width: 240px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.counter-text p {
+  font-size: var(--sm);
+  font-weight: 500;
+  line-height: 1.4;
+  text-align: center;
+  color: black;
+}
+
+.counter-inner {
+  display: flex;
+  margin-top: var(--spacing);
+}
+
+@media only screen and (max-width: 575px) {
+  .counter-inner {
+    flex-direction: column;
+    gap: 0px;
+    margin-top: 0;
+  }
+
+  .single-counter {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 757px) {
+  .counter-area {
+    padding: 0;
+  }
+}

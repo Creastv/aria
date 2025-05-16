@@ -1,0 +1,1 @@
+.news-area{padding:0;padding-bottom:30px}.news-inner{display:flex;justify-content:space-between;flex-wrap:wrap}.news-text h2 a{color:var(--black)}@media only screen and (max-width: 991px){.news-inner{gap:30px}}@media only screen and (max-width: 757px){.news-area{padding:0}.news-inner{padding:var(--spacing-mobile) 0}}/*# sourceMappingURL=news.min.css.map */

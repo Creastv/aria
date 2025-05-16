@@ -1,0 +1,65 @@
+.hero-post h1 {
+  text-transform: uppercase;
+  margin-top: 10px;
+}
+.hero-post p {
+  margin: 30px 0 0 0;
+}
+
+.post-area {
+  padding: 0 0 var(--spacing) 0;
+}
+
+.post-area .col-12 {
+  display: flex;
+  gap: 40px;
+}
+
+.post-area .post-content {
+  flex: 0 0 calc(70% - 40px);
+}
+
+.post-contactus h4 {
+  font-size: var(--sm);
+}
+.sticky-sidebar{
+  position: sticky;
+    top: 150px;
+}
+
+.post-contactus {
+  border-radius: 8px;
+  background: #fff;
+  padding: 20px;
+  box-shadow: 0px 0px 12px 0px rgba(32, 31, 31, 0.06);
+  transition: 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 300px;
+}
+
+.post-contactus:hover {
+  box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.1);
+  transform: translateY(-10px);
+}
+
+.post-img {
+  padding: 20px 0;
+}
+
+.post-img img {
+  width: 100%;
+  border-radius: 3px;
+}
+
+@media only screen and (max-width: 757px) {
+  .post-area {
+    padding: 0 0 var(--spacing-mobile) 0;
+  }
+
+  .post-area .col-12 {
+    gap: 20px;
+    flex-direction: column;
+  }
+}

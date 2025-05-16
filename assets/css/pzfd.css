@@ -1,0 +1,27 @@
+.pzfd-area {
+    padding: 40px 0;
+    background-color: #fbfbfb;
+  }
+  
+  .pzfd-inner {
+    display: flex;
+    align-items: center;
+  }
+  
+  .pzfd-logo {
+    max-width: 220px;
+    width: 100%;
+  }
+  
+  .pzfd-text {
+    max-width: calc(100% - 220px);
+    width: 100%;
+  }
+  
+  .pzfd-text p {
+    font-size: var(--xs);
+    font-weight: normal;
+    line-height: 1.4;
+    color: #444444;
+    margin: 0;
+  }

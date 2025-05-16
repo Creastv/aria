@@ -1,0 +1,38 @@
+.hero-section {
+  width: 100%;
+  z-index: 5;
+  color: white;
+  overflow: hidden;
+  position: relative;
+  width: 100vw;
+  left: -50vw;
+  margin-left: 50%;
+  overflow: hidden;
+}
+
+.hero-slider {
+  height: 100%;
+}
+
+.hero-content {
+  padding-top: 235px;
+  padding-bottom: 130px;
+  min-height: calc(100vh - 160px);
+}
+
+.slider-item {
+  min-height: calc(100vh - 160px);
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.acf-block-preview .hero-section .slider-item {
+  display: none;
+}
+.acf-block-preview .hero-section .slider-item:nth-child(1) {
+  display: block !important;
+}
+.acf-block-preview .hero-section .slider-controls-area {
+  display: none !important;
+}/*# sourceMappingURL=hero.css.map */

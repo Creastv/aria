@@ -1,0 +1,130 @@
+
+/* Archive page */
+.news-inner--archive{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.read-more-archive{
+  text-align: center;
+  padding: 50px 0;
+}
+/* eND Archive Page */
+
+/* recommended-posts */
+.b-bg--recomended{
+  padding: 50px 0;
+}
+.recommended-posts__wrap{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 15px;
+}
+/*  eNDrecommended-posts */
+
+/* recommended-locals */
+.b-bg--recomended--locals{
+  padding: 50px 0;
+}
+.recommended-locals__wrap{
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+/*  eNDrecommended-locals */
+
+.news-card {
+  position: relative;
+  max-width: calc(33.33% - 15px);
+  width: 100%;
+  transition: 0.3s ease-in-out;
+  border-radius: 8px;
+}
+
+.news-card:hover {
+  box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.2);
+  transform: translateY(-10px);
+}
+
+.news-img {
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.news-img img {
+  width: 100%;
+  height: auto;
+}
+
+.news-title {
+  max-width: 640px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.news-title p {
+  margin: 0;
+}
+
+.news-text {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 12px;
+  padding-bottom: 62px;
+  
+}
+.news-text .bttn {
+  position: absolute;
+  bottom: 12px;
+  width: calc(100% - 22px);
+}
+  
+.news-text  .news-text__label{
+  display: block;
+  font-size: var(--xxs);
+  font-weight: 500;
+  line-height: 1.4;
+  color: #868686;
+  margin-bottom: 10px;
+
+}
+
+.news-text h2  {
+  font-size: var(--md2);
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--black);
+}
+
+.news-text h2 a {
+  color: var(--black);
+}
+
+@media only screen and (max-width: 1199px) {
+  .recommended-locals__wrap{
+    grid-template-columns:  1fr 1fr  ;
+  }
+}
+
+@media only screen and (max-width: 991px) {
+
+  .news-card {
+    max-width: calc(50% - 15px);
+    width: 100%;
+  }
+}
+
+
+@media only screen and (max-width: 575px) {
+  .news-card {
+    max-width: 100%;
+  }
+  .recommended-locals__wrap{
+    grid-template-columns:  1fr;
+  }
+}

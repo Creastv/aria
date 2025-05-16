@@ -1,0 +1,25 @@
+.aboutus-area {
+  padding: var(--spacing);
+  min-height: 100vh;
+}
+
+.aboutus-content {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.aboutus-content div {
+  flex: 0 0 calc(50% - 20px);
+}
+
+@media only screen and (max-width: 757px) {
+  .aboutus-area {
+    padding: var(--spacing-mobile) 0;
+  }
+
+  .aboutus-content {
+    gap: 0;
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,286 @@
+.projekt-area {
+  padding-bottom: var(--spacing);
+}
+
+.breadcrumbs {
+  font-size: var(--sm);
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  margin: 30px 0;
+  /* margin-bottom: var(--spacing); */
+}
+
+.breadcrumbs li {
+  display: flex;
+  align-items: center;
+}
+
+.breadcrumbs li+li:before {
+  content: ">";
+  padding: 0 12px;
+  color: #868686;
+}
+
+.breadcrumbs li a {
+  text-decoration: none;
+  color: #868686;
+  transition: color 0.3s ease-in-out;
+}
+
+.breadcrumbs a:hover {
+  color: #f08d0c;
+}
+
+.breadcrumbs .active {
+  color: #1a1a1a;
+  font-weight: 500;
+}
+
+.projekt-container {
+  display: flex;
+  gap: 45px;
+  padding: 0;
+}
+
+.projekt-contact,
+.projekt-plan,
+.projekt-details {
+  box-sizing: border-box;
+}
+
+.projekt-details {
+  flex: 25%;
+}
+
+.projekt-plan {
+  flex: 45%;
+}
+
+.projekt-contact {
+  flex: 40%;
+}
+
+.contact-title {
+  font-weight: 500;
+  color: #1a1a1a;
+  font-size: var(--lg);
+  margin-bottom: 24px;
+}
+
+.projekt-plan {
+  margin-bottom: var(--spacing);
+}
+
+.projekt-plan svg {
+  height: 25px;
+  width: 25px;
+}
+
+.projekt-plan .nav-tabs {
+  justify-content: end;
+}
+
+.projekt-plan .nav-icon {
+  margin: auto 0;
+  transition: color 0.3s ease-in-out;
+}
+
+.plan-image-container {
+  padding: 20px 45px;
+}
+
+.projekt-details {
+  margin-bottom: var(--spacing);
+}
+
+h2.projekt-name {
+  margin-bottom: var(--spacing);
+}
+
+.projekt-details ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.projekt-details li::marker {
+  font-size: 0;
+}
+
+.details-item {
+  color: #868686;
+  position: relative;
+  padding-left: 50px;
+  margin-bottom: 40px;
+}
+
+.details-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 28px;
+  height: 28px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.details-item span {
+  text-transform: uppercase;
+  font-size: var(--xs);
+  font-weight: 400;
+  margin-bottom: 5px;
+}
+
+.details-item p {
+  font-size: var(--md);
+  font-weight: 500;
+  color: #1a1a1a;
+  position: relative;
+}
+
+.leaf {
+  padding-left: 5px;
+  margin-left: 20px;
+}
+
+.leaf::before {
+  content: "";
+  position: absolute;
+  left: -17px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 14px;
+  height: 14px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url("../img/projekty/leaf.svg");
+}
+
+.details-item .available {
+  color: #54a715;
+}
+
+.item-area::before {
+  background-image: url("../img/projekty/area.svg");
+}
+
+.item-floor::before {
+  background-image: url("../img/projekty/floor.svg");
+}
+
+.item-room::before {
+  background-image: url("../img/projekty/room.svg");
+}
+
+.item-backyard::before {
+  background-image: url("../img/projekty/backyard.svg");
+}
+
+.item-status::before {
+  background-image: url("../img/projekty/status.svg");
+}
+
+.item-stairway::before {
+  background-image: url("../img/projekty/stairway.svg");
+}
+
+.item-offer::before {
+  background-image: url("../img/projekty/offer.svg");
+}
+
+@media only screen and (max-width: 991px) {
+  .projekt-plan .nav-tabs {
+    justify-content: center;
+    margin: 0;
+  }
+
+  .projekt-container {
+    gap: 15px;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .projekt-details {
+    flex: calc(30% - 15px);
+    margin: 0;
+  }
+
+  .projekt-plan {
+    flex: calc(70% - 15px);
+    margin: 0;
+  }
+
+  .projekt-contact {
+    flex: 100%;
+    order: 1;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  h2.projekt-name {
+    margin-bottom: 20px;
+  }
+
+  .projekt-plan .nav-tabs {
+    justify-content: start;
+    margin-bottom: 20px;
+  }
+
+  .projekt-container {
+    flex-direction: column;
+  }
+
+  .projekt-details,
+  .projekt-plan,
+  .projekt-contact {
+    margin-bottom: 20px;
+  }
+
+  .projekt-plan {
+    order: 1;
+  }
+
+  .projekt-details {
+    order: 2;
+  }
+
+  .projekt-contact {
+    order: 3;
+  }
+
+  .projekt-details ul {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin: 0 20px;
+  }
+
+  .details-item {
+    flex: calc(33% - 30px);
+    margin-bottom: 10px;
+  }
+
+  .plan-image-container {
+    padding: 0;
+  }
+}
+
+@media only screen and (max-width: 460px) {
+  .projekt-details ul {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin: 0 30px;
+  }
+
+  .details-item {
+    flex: calc(50% - 40px);
+    margin-bottom: 10px;
+  }
+}

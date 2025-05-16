@@ -1,0 +1,33 @@
+/* Plugins */
+/* @import url("plugins/bootstrap.min.css");
+@import url("plugins/ion.rangeSlider.min.css");
+@import url("plugins/ion.rangeSlider.min.css");
+@import url("plugins/select2.min.css");
+@import url("plugins/slick.min.css");
+@import url("plugins/slick-theme.min.css");
+@import url("plugins/leaflet.css");
+@import url("plugins/fancybox.css"); */
+/* Custom Style */
+@import url("style.css");
+@import url("header.css");
+@import url("content.css");
+@import url("customer.css");
+@import url("news.css");
+@import url("investment.css");
+@import url("contact.css");
+@import url("kredyty.css");
+@import url("footer.css");
+@import url("filters.css");
+@import url("faq.css");
+@import url("appointment.css");
+@import url("counter.css");
+@import url("timeline.css");
+@import url("inwestycja.css");
+@import url("table.css");
+@import url("gallery.css");
+@import url("video-container.css");
+@import url("map.css");
+@import url("projekty.css");
+@import url("expert.css");
+@import url("aboutus.css");
+@import url("post.css");

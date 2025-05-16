@@ -1,0 +1,36 @@
+@import url("plugins/bootstrap.min.css");
+@import url("style.css");
+@import url("plugins/slick.min.css");
+@import url("news.css");
+@import url("title.css");
+@import url("expert.css");
+
+.wp-block-spacer {
+    background-color: #eeeef0 !important;
+  }
+  
+  .wp-block {
+    max-width: 90%;
+  }
+  /* Width of "wide" blocks */
+  .wp-block[data-align="wide"] {
+    max-width: 100%;
+  }
+  /* Width of "full-width" blocks */
+  .wp-block[data-align="full"] {
+    max-width: none;
+  }
+  
+  html :where(.wp-block)[data-align="right"] > * {
+    float: none !important;
+  }
+  
+  html :where(.wp-block)[data-align="left"] > * {
+    float: none !important;
+  }
+  
+  html :where(.wp-block)[data-align="left"],
+  html :where(.wp-block)[data-align="right"] {
+    width: 100%;
+    height: initial !important;
+  }

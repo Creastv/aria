@@ -1,0 +1,118 @@
+.kredyty-area {
+  padding: 0;
+  background: #fbfbfb;
+}
+
+.kredyty-left {
+  max-width: 585px;
+}
+
+.kredyty-right {
+  height: 100%;
+}
+
+.calculator-card {
+  padding: 32px 40px 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.08);
+  background-color: white;
+  height: 100%;
+}
+
+.calculator-title {
+  font-size: var(--xl);
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.calculator-subtitle {
+  font-size: var(--sm);
+  font-weight: normal;
+  line-height: 1.4;
+  color: #444444;
+  margin-bottom: 25px;
+}
+
+.slider-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: var(--xs);
+  font-weight: 600;
+  line-height: 1.4;
+  color: black;
+}
+
+.form-range {
+  /* background-color: #d9d9d9; */
+  margin: 20px 0;
+}
+
+.calculator-result-bttn {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.calculate-btn {
+  line-height: 40px;
+  font-size: var(--xs);
+  font-weight: 600;
+  color: #fff;
+}
+
+.result-label {
+  font-size: var(--xs);
+  font-weight: normal;
+  line-height: 1.4;
+}
+
+.result-value {
+  font-size: var(--lg);
+  font-weight: bold;
+  text-align: center;
+  color: #000;
+}
+
+.result-rrso {
+  font-size: var(--md);
+  font-weight: bold;
+}
+
+.calculator-result {
+  text-align: right;
+}
+
+.disclaimer {
+  font-size: var(--xxs);
+  font-weight: normal;
+  line-height: 1.4;
+  color: #444444;
+  margin: 25px 0;
+}
+
+.disclaimer a {
+  font-weight: bold;
+  color: #444444;
+}
+
+.notus-logo {
+  text-align: right;
+}
+
+.fw-normal {
+  font-weight: normal;
+}
+
+.slider-label-2 {
+  margin-bottom: 15px;
+}
+
+@media only screen and (max-width: 991px) {
+  .kredyty-right {
+    height: auto;
+  }
+  .calculator-card {
+    padding: 15px;
+  }
+}/*# sourceMappingURL=calc.css.map */

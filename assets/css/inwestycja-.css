@@ -1,0 +1,67 @@
+
+.hero-section .bttn {
+  max-width: 245px;
+  width: 100%;
+  line-height: 1;
+  padding: 13px 0;
+  justify-content: center;
+}
+
+.content-inwestycja .content-inner {
+  gap: 60px;
+}
+
+.content-inwestycja .content-card {
+  aspect-ratio: 1/1;
+  flex: 1 1 calc(25% - 60px);
+  max-width: none;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.expert-contact {
+  flex-direction: column;
+}
+
+.pdb-40 {
+  padding-bottom: 40px;
+}
+
+@media only screen and (max-width: 991px) {
+  .ecological {
+    justify-content: space-evenly;
+  }
+
+  .content-inwestycja .content-inner {
+    gap: 40px;
+    margin-bottom: 0;
+  }
+
+  .content-inwestycja .content-card {
+    aspect-ratio: 1/1;
+    flex: 1 1 calc(50% - 50px);
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .content-inner.justify-content {
+    padding: 30px 0;
+    gap: 0;
+  }
+
+  .content-inwestycja .content-inner {
+    gap: 30px;
+  }
+
+  .content-inwestycja .content-card {
+    flex: 1 1 calc(50% - 30px);
+  }
+}
+
+@media only screen and (max-width: 479px) {
+  .content-inwestycja .content-inner {
+    gap: 10px;
+  }
+}

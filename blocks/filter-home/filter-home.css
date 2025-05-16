@@ -1,0 +1,48 @@
+@import url("../../assets/css/filters.css");
+/* new button */
+.search-btn--filter.w-100 {
+  max-width: 237px !important;
+  width: 100%;
+  border-radius: 12px;
+  font-size: var(--sm);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: center;
+}
+
+.search-btn--filter {
+  position: relative;
+  display: inline-block;
+  color: white;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.search-btn--filter::before,
+.search-btn--filter::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  background-color: #000;
+  color: #000;
+  border-radius: 12px;
+  z-index: -1;
+}
+
+.search-btn--filter::after {
+  opacity: 0;
+  background-image: linear-gradient(101deg, #f08d0c 6%, #f0540c 100%);
+  transition: opacity 0.3s ease-in-out;
+}
+
+.search-btn--filter:hover::after {
+  opacity: 1;
+}
+
+/* end *//*# sourceMappingURL=filter-home.css.map */
