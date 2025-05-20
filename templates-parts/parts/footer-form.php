@@ -36,21 +36,19 @@
         <div class="form-group">
             <input type="checkbox" id="checkbox-1">
             <label for="checkbox-1">Wyrażam zgodę na przetwarzanie moich danych osobowych przez
-                ARIA
-                WRC Development Sp. z o.o., Sp. K. w celach
+                Aria 3 Development Spółka z Ograniczoną Odpowiedzialnością, Sp. K. w celach
                 marketingowych, w tym informowania o aktualnej ofercie. <br></label>
         </div>
         <div class="form-group">
             <input type="checkbox" id="checkbox-2">
-            <label for="checkbox-2">Wyrażam zgodę na kontakt przez ARIA WRC Development Sp. z
-                o.o., Sp. K za pomocą telekomunikacyjnych urządzeń końcowych i
+            <label for="checkbox-2">Wyrażam zgodę na kontakt przez Aria 3 Development Spółka z Ograniczoną Odpowiedzialnością, Sp. K za pomocą telekomunikacyjnych urządzeń końcowych i
                 automatycznych systemów wywołujących (telefon, e-mail) zgodnie z ustawą Prawo
                 telekomunikacyjne z 16 lipca 2014 r.</label>
         </div>
         <div class="form-group">
             <input type="checkbox" id="checkbox-3">
             <label for="checkbox-3">Wyrażam zgodę na otrzymywanie drogą elektroniczną informacji
-                handlowych od ARIA WRC Development Sp. z o.o., Sp. K.
+                handlowych od Aria 3 Development Spółka z Ograniczoną Odpowiedzialnością, Sp. K.
                 zgodnie z ustawą o świadczeniu usług drogą elektroniczną z 18 lipca 2002
                 r.</label>
         </div>
