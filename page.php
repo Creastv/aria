@@ -4,12 +4,12 @@ get_header();
 
 <?php
 while (have_posts()) : the_post(); ?>
-    <article id="page-<?php the_ID(); ?>" class="hentry page">
+<article id="page-<?php the_ID(); ?>" class="hentry page">
 
-        <div class="entry-content">
-            <?php the_content(); ?>
-        </div>
-    </article>
+    <div class="entry-content">
+        <?php the_content(); ?>
+    </div>
+</article>
 <?php endwhile;
 
 // $lokale = new WP_Query([
@@ -87,22 +87,5 @@ while (have_posts()) : the_post(); ?>
 // // } else {
 // //     echo "<p>⚠️ Brak danych w \$data['Products'].</p>";
 // // }
-
-
-
-$test_posts = get_posts([
-    'post_type' => 'lokale',
-    'meta_query' => [
-        [
-            'key'     => 'id_crm',
-            'value'   => '1671',
-            'compare' => '=',
-        ]
-    ],
-    'posts_per_page' => -1,
-    'fields' => 'ids',
-]);
-
-var_dump($test_posts);
 
 get_footer();
