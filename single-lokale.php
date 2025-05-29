@@ -8,6 +8,7 @@ $stears = get_field('klatka', get_the_ID());
 $rooms = get_field('pokoje', get_the_ID());
 $status = get_field('status', get_the_ID());
 $price = get_field('cena', get_the_ID());
+$plan = get_field('plan_mieszkania');
 $statusInfo = "";
 $statusInfoClass = "";
 if ($status == 1) :
@@ -129,8 +130,10 @@ while (have_posts()) : the_post(); ?>
                     <div class="tab-content" id="nav-tabContent">
                         <div class="tab-pane fade active show" id="tab-1" role="tabpanel"
                             aria-labelledby="nav-home-tab">
-                            <img src="<?php echo get_template_directory_uri(); ?>/assets/img/projekty/rzut-2d.png"
-                                alt="image">
+                            <?php  if ($plan) { ?>
+                                <img src='<?php echo $plan; ?>' alt='Plan lokalu' style='max-width:100%; border:1px solid #ccc'>
+                                <?php } ?>
+                            <!-- <img src="<?php echo get_template_directory_uri(); ?>/assets/img/projekty/rzut-2d.png" alt="image"> -->
                         </div>
                         <div class="tab-pane fade " id="tab-2" role="tabpanel" aria-labelledby="nav-home-tab">
                             test 2

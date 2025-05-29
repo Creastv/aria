@@ -259,3 +259,86 @@ function render_editable_post_meta_box($post)
         echo '<p>Brak meta danych do edycji.</p>';
     }
 }
+
+
+add_action('init', function () {
+	if (!is_admin() && is_post_type_archive('lokale')) {
+		if (false === get_transient('lokale_statusy_zaktualizowane')) {
+			error_log('⏱ Transient wygasł – odpalam aktualizację');
+			aktualizuj_statusy_lokali_z_crm();
+			set_transient('lokale_statusy_zaktualizowane', true, 5 * MINUTE_IN_SECONDS);
+		}
+	}
+});
+
+
+// Dodaj podstronę do Narzędzia -> Stan cache
+add_action('admin_menu', function () {
+	add_management_page(
+		'Stan cache',
+		'Stan cache (transienty)',
+		'manage_options',
+		'transient-status',
+		'pokaz_transienty_page'
+	);
+});
+
+function pokaz_transienty_page() {
+	global $wpdb;
+
+	echo '<div class="wrap"><h1>Stan transientów w WordPressie</h1>';
+
+	$transients = $wpdb->get_results("
+		SELECT option_name, option_value
+		FROM {$wpdb->options}
+		WHERE option_name LIKE '_transient_%'
+		ORDER BY option_name
+	");
+
+	if (empty($transients)) {
+		echo '<p>Brak aktywnych transientów.</p></div>';
+		return;
+	}
+
+	echo '<table class="widefat fixed striped">';
+	echo '<thead><tr><th>Nazwa</th><th>Wartość</th><th>Wygasa</th><th>Usuń</th></tr></thead><tbody>';
+
+	foreach ($transients as $row) {
+		$name = esc_html($row->option_name);
+		$value = maybe_unserialize($row->option_value);
+
+		// Sprawdź, czy to timeout
+		if (str_starts_with($name, '_transient_timeout_')) continue;
+
+		$timeout_name = str_replace('_transient_', '_transient_timeout_', $name);
+		$timeout = $wpdb->get_var($wpdb->prepare("SELECT option_value FROM {$wpdb->options} WHERE option_name = %s", $timeout_name));
+		$expires = $timeout ? date('Y-m-d H:i:s', $timeout) : '—';
+
+		$value_preview = esc_html(print_r($value, true));
+		if (strlen($value_preview) > 150) {
+			$value_preview = substr($value_preview, 0, 150) . '...';
+		}
+
+		$delete_url = wp_nonce_url(admin_url("tools.php?page=transient-status&delete_transient={$name}"), 'delete_transient');
+
+		echo "<tr>
+			<td><code>{$name}</code></td>
+			<td><pre>{$value_preview}</pre></td>
+			<td>{$expires}</td>
+			<td><a href='{$delete_url}' class='button'>Usuń</a></td>
+		</tr>";
+	}
+
+	echo '</tbody></table></div>';
+}
+
+// Obsługa usuwania transientów
+add_action('admin_init', function () {
+	if (isset($_GET['delete_transient']) && current_user_can('manage_options') && check_admin_referer('delete_transient')) {
+		$name = sanitize_text_field($_GET['delete_transient']);
+		$key = str_replace('_transient_', '', $name);
+		delete_transient($key);
+		wp_safe_redirect(admin_url('tools.php?page=transient-status&deleted=' . urlencode($name)));
+		exit;
+	}
+});
