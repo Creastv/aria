@@ -13,7 +13,7 @@
 }
 
 .investment-img {
-  max-width: 60%;
+  width: 60%;
   position: relative;
 }
 
@@ -64,7 +64,7 @@
 }
 
 .investment-text {
-  max-width: 40%;
+  width: 40%;
   padding-left: 60px;
 }
 
@@ -156,11 +156,11 @@
 
 @media only screen and (max-width: 1199px) {
   .investment-img {
-    max-width: 50%;
+    width: 50%;
   }
 
   .investment-text {
-    max-width: 50%;
+    width: 50%;
     padding-left: 30px;
   }
 }
