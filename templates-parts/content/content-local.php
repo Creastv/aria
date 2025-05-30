@@ -31,8 +31,7 @@ if ($floor == 0) {
     <div class="grid-item-header">
         <div>
             <?php if (!empty($budynek)) : ?>
-                <span>Budynek <?php echo $budynek; ?></span>
-            <?php endif; ?>
+                <span>Etap <?php echo $budynek; ?></span> <?php endif; ?>
             <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
         </div>
         <button class="favorite-btn grid-favorite-toggle" data-index="<?php echo get_the_ID(); ?>">
@@ -45,7 +44,7 @@ if ($floor == 0) {
         </button>
     </div>
     <a href="<?php the_permalink(); ?>">
-        <?php  if ($plan) { ?>
+        <?php if ($plan) { ?>
             <img src='<?php echo $plan; ?>' alt='Plan lokalu'>
         <?php } ?>
         <!-- <img src="<?php echo get_template_directory_uri(); ?>/assets/img/inwestycja/floor-plan.png" alt="Floor plan"> -->

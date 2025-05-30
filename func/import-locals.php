@@ -29,8 +29,13 @@ function import_lokale_links()
         // Sprawdzenie, czy lokal już istnieje
         $existing = get_posts([
             'post_type' => 'lokale',
-            'meta_key' => 'crm_id',
-            'meta_value' => $crm_id,
+            'meta_query' => [
+                [
+                    'key'     => 'id_crm',
+                    'value'   => (string) $crm_id,
+                    'compare' => '=',
+                ]
+            ],
             'posts_per_page' => 1,
             'fields' => 'ids',
         ]);
@@ -52,6 +57,7 @@ function import_lokale_links()
         }
 
         // Meta dane
+        update_field('lokalizacja', 'Wieliszew', $post_id);
         update_field('id_crm', $lokal['ID_Product'], $post_id);
         update_field('id_inwestycji', $lokal['ID_Investment'], $post_id);
         update_field('nazwa_inwestycji', $lokal['InvestmentTitle'], $post_id);
@@ -67,6 +73,7 @@ function import_lokale_links()
         update_field('pokoje', $lokal['Rooms'], $post_id);
         update_field('status', $lokal['ID_ProductStatus'], $post_id);
         update_field('cena', $lokal['TotalOfferBrutto'], $post_id);
+
         echo '✅ Dodano lokal: ' . $tytul . ' (ID: ' . $post_id . ')<br>';
 
         // Balkon (jeśli występuje)
@@ -81,6 +88,7 @@ function import_lokale_links()
         } elseif (isset($supplements['ProductsKindTitle']) && $supplements['ProductsKindTitle'] === 'Balkon') {
             update_field('rozmiar_balkonu', $supplements['Area'], $post_id);
         }
+        // 2d
         if (isset($lokal['Pictures'])) {
             // 🔽 Pobieranie planu lokalu jako base64 i zapis do ACF
             $plan_url = 'https://www.deweloperserwer.eu/scripts/showproduct.ashx?key=' . $key . '&ID_Product=' . $crm_id . '&FileKind=2&FileType=4';
@@ -90,6 +98,23 @@ function import_lokale_links()
             if ($plan_data !== false && strlen($plan_data) > 100) {
                 $plan_base64 = 'data:image/jpeg;base64,' . base64_encode($plan_data);
                 update_field('plan_mieszkania', $plan_base64, $post_id);
+                echo "🖼️ Zapisano plan lokalu dla ID CRM: $crm_id<br>";
+            } else {
+                echo "⚠️ Brak planu lokalu lub nie można pobrać dla ID CRM: $crm_id<br>";
+            }
+        } else {
+            echo "⏭️ Pominięto pobieranie planu – brak pola 'Pictures' w danych lokalu (ID CRM: $crm_id)<br>";
+        }
+        // 3D
+        if (isset($lokal['Pictures'])) {
+            // 🔽 Pobieranie planu lokalu jako base64 i zapis do ACF
+            $plan_url = 'https://www.deweloperserwer.eu/scripts/showproduct.ashx?key=' . $key . '&ID_Product=' . $crm_id . '&FileKind=2&FileType=21';
+            $context = stream_context_create(['http' => ['timeout' => 5]]);
+            $plan_data = @file_get_contents($plan_url, false, $context);
+
+            if ($plan_data !== false && strlen($plan_data) > 100) {
+                $plan_base64 = 'data:image/jpeg;base64,' . base64_encode($plan_data);
+                update_field('rzut_3d', $plan_base64, $post_id);
                 echo "🖼️ Zapisano plan lokalu dla ID CRM: $crm_id<br>";
             } else {
                 echo "⚠️ Brak planu lokalu lub nie można pobrać dla ID CRM: $crm_id<br>";

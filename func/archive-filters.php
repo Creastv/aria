@@ -26,7 +26,7 @@ function filter_lokale_query($query)
 
         if (!empty($location)) {
             $meta_query[] = [
-                'key'     => 'nazwa_lokalu',
+                'key'     => 'lokalizacja',
                 'value'   => $location,
                 'compare' => '='
             ];
@@ -73,7 +73,7 @@ function ajax_filter_lokale()
 
     if (!empty($_POST['location'])) {
         $meta_query[] = [
-            'key'     => 'nazwa_lokalu',
+            'key'     => 'lokalizacja',
             'value'   => sanitize_text_field($_POST['location']),
             'compare' => '=',
         ];

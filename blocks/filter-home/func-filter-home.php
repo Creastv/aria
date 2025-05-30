@@ -21,7 +21,7 @@ function update_filters_callback_home()
     $args_investment['meta_query'] = [];
     if ($location) {
         $args_investment['meta_query'][] = [
-            'key'     => 'nazwa_lokalu',
+            'key'     => 'lokalizacja',
             'value'   => $location,
             'compare' => '='
         ];
@@ -64,7 +64,7 @@ function update_filters_callback_home()
     }
     if ($location) {
         $args_rooms['meta_query'][] = [
-            'key'     => 'nazwa_lokalu',
+            'key'     => 'lokalizacja',
             'value'   => $location,
             'compare' => '='
         ];
@@ -82,7 +82,7 @@ function update_filters_callback_home()
     }
     if ($location) {
         $args_results['meta_query'][] = [
-            'key'     => 'nazwa_lokalu',
+            'key'     => 'lokalizacja',
             'value'   => $location,
             'compare' => '='
         ];
@@ -112,7 +112,7 @@ function update_filters_callback_home()
 
     // Lokalizacje → z args_location
     foreach ($posts_location as $post_id) {
-        $val = get_field('nazwa_lokalu', $post_id);
+        $val = get_field('lokalizacja', $post_id);
         if (!empty($val)) $lokalizacje[] = $val;
     }
 

@@ -15,7 +15,7 @@ $pokoje = [];
 if ($lokale) {
     foreach ($lokale as $post_id) {
         $inwestycja = get_field('nazwa_inwestycji', $post_id);
-        $lokalizacja = get_field('nazwa_lokalu', $post_id);
+        $lokalizacja = get_field('lokalizacja', $post_id);
         $ilosc_pokoi = get_field('pokoje', $post_id);
 
         if (!empty($inwestycja)) $inwestycje[] = $inwestycja;
