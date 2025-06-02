@@ -145,6 +145,9 @@ while (have_posts()) : the_post(); ?>
                                             alt='<?php echo $invName; ?> - <?php the_title(); ?> - Plan'
                                             style='max-width:100%;'>
                                     </a>
+                                <?php } else { ?>
+                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/img/local.png"
+                                        alt="Floor plan">
                                 <?php } ?>
                                 <!-- <img src="<?php echo get_template_directory_uri(); ?>/assets/img/projekty/rzut-2d.png" alt="image"> -->
                             </div>

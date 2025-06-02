@@ -2,7 +2,7 @@
 function import_lokale_links()
 {
     $key = '9a13d7dc-be11-4f74-a578-25faf50b7913';
-    $url = 'http://deweloperserwer.eu/scripts/getproducts.ashx?key=' . $key . '&ID_Investment=3&format=json';
+    $url = 'http://deweloperserwer.eu/scripts/getproducts.ashx?key=' . $key . '&ID_Investment=10&format=json';
 
     $response = wp_remote_get($url, ['timeout' => 20]);
 
@@ -57,7 +57,7 @@ function import_lokale_links()
         }
 
         // Meta dane
-        update_field('lokalizacja', 'Wieliszew', $post_id);
+        update_field('lokalizacja', 'Legionowo', $post_id);
         update_field('id_crm', $lokal['ID_Product'], $post_id);
         update_field('id_inwestycji', $lokal['ID_Investment'], $post_id);
         update_field('nazwa_inwestycji', $lokal['InvestmentTitle'], $post_id);

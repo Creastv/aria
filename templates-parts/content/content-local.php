@@ -42,8 +42,9 @@ if ($floor == 0) {
     <a href="<?php the_permalink(); ?>">
         <?php if ($plan2d) { ?>
             <img src='<?php echo $plan2d; ?>' alt='Plan lokalu'>
+        <?php } else { ?>
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/img/local.png" alt="Floor plan">
         <?php } ?>
-        <!-- <img src="<?php echo get_template_directory_uri(); ?>/assets/img/inwestycja/floor-plan.png" alt="Floor plan"> -->
     </a>
     <div class="grid-item-content">
         <div class="grid-item-card">
