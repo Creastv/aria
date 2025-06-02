@@ -136,9 +136,9 @@ add_action('init', function () {
 });
 
 // Odświerzanie lokali statusy
-add_action('init', function () {
-    aktualizuj_statusy_lokali_z_crm();
-});
+// add_action('init', function () {
+//     aktualizuj_statusy_lokali_z_crm();
+// });
 
 function aktualizuj_statusy_lokali_z_crm()
 {

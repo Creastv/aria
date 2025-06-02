@@ -1,3 +1,19 @@
+.status-available {
+  color: #54a715!important;
+}
+
+.status-reserved {
+  color: #868686!important;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.status-sold {
+  color: red!important;
+}
+
 .faq-area {
   padding: var(--spacing) 0;
 }
