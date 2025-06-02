@@ -137,10 +137,7 @@ add_action('init', function () {
 
 // Odświerzanie lokali statusy
 add_action('init', function () {
-    // if (!is_admin() && is_post_type_archive('lokale')) {
-    error_log('✅ JESTEŚMY NA /lokale/');
     aktualizuj_statusy_lokali_z_crm();
-    // }
 });
 
 function aktualizuj_statusy_lokali_z_crm()

@@ -11,11 +11,11 @@
         'orderby'        => 'rand',
         'meta_query'     => [
             'relation' => 'AND',
-            [
-                'key'     => 'status',
-                'value'   => 1, // interesuje nas tylko status = 1
-                'compare' => '='
-            ],
+            // [
+            //     'key'     => 'status',
+            //     'value'   => 1, // interesuje nas tylko status = 1
+            //     'compare' => '='
+            // ],
             [
                 'key'     => 'nazwa_inwestycji',
                 'value'   => $current_investment,

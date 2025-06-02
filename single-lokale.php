@@ -1,6 +1,7 @@
 <?php
 get_header();
-
+$invName = get_field('nazwa_inwestycji', get_the_ID());
+$localization = get_field('lokalizacja', get_the_ID());
 $budynek = get_field('budynek', get_the_ID());
 $floor = get_field('pietro', get_the_ID());
 $size = get_field('metraz', get_the_ID());
@@ -107,7 +108,7 @@ while (have_posts()) : the_post(); ?>
                 <div class="projekt-plan">
                     <!-- Navigation -->
                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                        <button class="active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#tab-1" type="button"
+                        <button class="active" id="nav-tab-lokal" data-bs-toggle="tab" data-bs-target="#tab-1" type="button"
                             role="tab" aria-controls="tab-1" aria-selected="true">
                             PLAN
                         </button>
@@ -135,20 +136,29 @@ while (have_posts()) : the_post(); ?>
                     <div class=" plan-image-container">
                         <div class="tab-content" id="nav-tabContent">
                             <div class="tab-pane fade active show" id="tab-1" role="tabpanel"
-                                aria-labelledby="nav-home-tab">
+                                aria-labelledby="nav-tab-lokal">
                                 <?php if ($plan) { ?>
-                                    <img src='<?php echo $plan; ?>' alt='Plan lokalu' style='max-width:100%;'>
+                                    <a data-fancybox="gallery" href="<?php echo $plan; ?>">
+                                        <img src='<?php echo $plan; ?>'
+                                            alt='<?php echo $invName; ?> - <?php the_title(); ?> - Plan'
+                                            style='max-width:100%;'>
+                                    </a>
                                 <?php } ?>
                                 <!-- <img src="<?php echo get_template_directory_uri(); ?>/assets/img/projekty/rzut-2d.png" alt="image"> -->
                             </div>
                             <?php if ($plan2d) { ?>
-                                <div class="tab-pane fade " id="tab-2" role="tabpanel" aria-labelledby="nav-home-tab">
-                                    <img src='<?php echo $plan2d; ?>' alt='Plan lokalu' style='max-width:100%;'>
+                                <div class="tab-pane fade " id="tab-2" role="tabpanel" aria-labelledby="nav-tab-lokal">
+                                    <img src='<?php echo $plan2d; ?>'
+                                        alt='<?php echo $invName; ?> - <?php the_title(); ?> - Plan 2D' style='max-width:100%;'>
                                 </div>
                             <?php } ?>
-                            <?php if ($plan) { ?>
-                                <div class="tab-pane fade " id="tab-3" role="tabpanel" aria-labelledby="nav-home-tab">
-                                    <img src='<?php echo $plan3d; ?>' alt='Plan lokalu' style='max-width:100%;'>
+                            <?php if ($plan3d) { ?>
+                                <div class="tab-pane fade " id="tab-3" role="tabpanel" aria-labelledby="nav-tab-lokal">
+                                    <a data-fancybox="gallery" href="<?php echo $plan3d; ?>">
+                                        <img src='<?php echo $plan3d; ?>'
+                                            alt='<?php echo $invName; ?> - <?php the_title(); ?> - Plan 3D'
+                                            style='max-width:100%;'>
+                                    </a>
                                 </div>
                             <?php } ?>
                         </div>
