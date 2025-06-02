@@ -111,23 +111,20 @@ while (have_posts()) : the_post(); ?>
                 <div class="projekt-plan">
                     <!-- Navigation -->
                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                        <?php if ($plan) { ?>
+                        <?php if ($plan2d) { ?>
                             <button class="active" id="nav-tab-lokal" data-bs-toggle="tab" data-bs-target="#tab-1" type="button"
                                 role="tab" aria-controls="tab-1" aria-selected="true">
-                                PLAN
-                            </button>
-                        <?php } ?>
-                        <?php if ($plan2d) { ?>
-                            <button class="" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#tab-2" type="button"
-                                role="tab" aria-controls="tab-2" aria-selected="false">
-                                RZUT 2D
+                                PLAN 2d
                             </button>
                         <?php } ?>
                         <?php if ($plan3d) { ?>
-                            <button class="" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#tab-3" type="button"
-                                role="tab" aria-controls="tab-3" aria-selected="false">
+                            <button class="" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#tab-2" type="button"
+                                role="tab" aria-controls="tab-2" aria-selected="false">
                                 RZUT 3D
                             </button>
+                        <?php } ?>
+                        <?php if ($plan) { ?>
+                            <a href="<?php echo $plan; ?>" class="bttn" target="_blank">Pobierz PDF</a>
                         <?php } ?>
                         <div class="favorite-btn grid-favorite-toggle" data-index="<?php echo get_the_ID(); ?>">
                             <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -142,23 +139,17 @@ while (have_posts()) : the_post(); ?>
                         <div class="tab-content" id="nav-tabContent">
                             <div class="tab-pane fade active show" id="tab-1" role="tabpanel"
                                 aria-labelledby="nav-tab-lokal">
-                                <?php if ($plan) { ?>
-                                    <a data-fancybox="gallery" href="<?php echo $plan; ?>">
-                                        <img src='<?php echo $plan; ?>'
+                                <?php if ($plan2d) { ?>
+                                    <a data-fancybox="gallery" href="<?php echo $plan2d; ?>">
+                                        <img src='<?php echo $plan2d; ?>'
                                             alt='<?php echo $invName; ?> - <?php the_title(); ?> - Plan'
                                             style='max-width:100%;'>
                                     </a>
                                 <?php } ?>
                                 <!-- <img src="<?php echo get_template_directory_uri(); ?>/assets/img/projekty/rzut-2d.png" alt="image"> -->
                             </div>
-                            <?php if ($plan2d) { ?>
-                                <div class="tab-pane fade " id="tab-2" role="tabpanel" aria-labelledby="nav-tab-lokal">
-                                    <img src='<?php echo $plan2d; ?>'
-                                        alt='<?php echo $invName; ?> - <?php the_title(); ?> - Plan 2D' style='max-width:100%;'>
-                                </div>
-                            <?php } ?>
                             <?php if ($plan3d) { ?>
-                                <div class="tab-pane fade " id="tab-3" role="tabpanel" aria-labelledby="nav-tab-lokal">
+                                <div class="tab-pane fade " id="tab-2" role="tabpanel" aria-labelledby="nav-tab-lokal">
                                     <a data-fancybox="gallery" href="<?php echo $plan3d; ?>">
                                         <img src='<?php echo $plan3d; ?>'
                                             alt='<?php echo $invName; ?> - <?php the_title(); ?> - Plan 3D'
