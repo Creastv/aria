@@ -5,7 +5,7 @@ $size = get_field('metraz', get_the_ID());
 $rooms = get_field('pokoje', get_the_ID());
 $status = get_field('status', get_the_ID());
 $price = get_field('cena', get_the_ID());
-$plan = get_field('plan_mieszkania', get_the_ID());
+$plan2d = get_field('rzut_2d');
 $balony = get_field('rozmiar_balkonu', get_the_ID());
 $statusInfo = "";
 $statusInfoClass = "";
@@ -40,8 +40,8 @@ if ($floor == 0) {
         </button>
     </div>
     <a href="<?php the_permalink(); ?>">
-        <?php if ($plan) { ?>
-            <img src='<?php echo $plan; ?>' alt='Plan lokalu'>
+        <?php if ($plan2d) { ?>
+            <img src='<?php echo $plan2d; ?>' alt='Plan lokalu'>
         <?php } ?>
         <!-- <img src="<?php echo get_template_directory_uri(); ?>/assets/img/inwestycja/floor-plan.png" alt="Floor plan"> -->
     </a>

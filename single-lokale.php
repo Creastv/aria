@@ -111,10 +111,12 @@ while (have_posts()) : the_post(); ?>
                 <div class="projekt-plan">
                     <!-- Navigation -->
                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                        <button class="active" id="nav-tab-lokal" data-bs-toggle="tab" data-bs-target="#tab-1" type="button"
-                            role="tab" aria-controls="tab-1" aria-selected="true">
-                            PLAN
-                        </button>
+                        <?php if ($plan) { ?>
+                            <button class="active" id="nav-tab-lokal" data-bs-toggle="tab" data-bs-target="#tab-1" type="button"
+                                role="tab" aria-controls="tab-1" aria-selected="true">
+                                PLAN
+                            </button>
+                        <?php } ?>
                         <?php if ($plan2d) { ?>
                             <button class="" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#tab-2" type="button"
                                 role="tab" aria-controls="tab-2" aria-selected="false">
