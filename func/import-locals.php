@@ -97,7 +97,7 @@ function import_lokale_links()
 
             if ($plan_data !== false && strlen($plan_data) > 100) {
                 $plan_base64 = 'data:image/jpeg;base64,' . base64_encode($plan_data);
-                update_field('rzut_3d', $plan_base64, $post_id);
+                update_field('rzut_2d', $plan_base64, $post_id);
                 echo "🖼️ Zapisano plan lokalu dla ID CRM: $crm_id<br>";
             } else {
                 echo "⚠️ Brak planu lokalu lub nie można pobrać dla ID CRM: $crm_id<br>";
