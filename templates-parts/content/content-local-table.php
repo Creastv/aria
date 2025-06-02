@@ -3,8 +3,11 @@ $budynek = get_field('budynek', get_the_ID());
 $floor = get_field('pietro', get_the_ID());
 $size = get_field('metraz', get_the_ID());
 $rooms = get_field('pokoje', get_the_ID());
+$balony = get_field('rozmiar_balkonu', get_the_ID());
 $status = get_field('status', get_the_ID());
 $price = get_field('cena', get_the_ID());
+$plan2d = get_field('rzut_2d');
+$plan3d = get_field('rzut_3d');
 $statusInfo = "";
 $statusInfoClass = "";
 if ($status == 1) :
@@ -29,11 +32,25 @@ if ($floor == 0) {
     <td><?php echo $floor; ?></td>
     <td><?php echo $rooms; ?></td>
     <td class="hide-mobile">
-        <?php echo is_numeric($size) ? number_format((float) $size, 2) . ' m²' : '-'; ?>
-
+        <?php if (!empty($balony)) : ?>
+            <?php echo is_numeric($size) ? number_format((float) $size, 2) . ' m²' : '-'; ?>
+        <?php else: ?>
+            -
+        <?php endif; ?>
     </td>
     <td><span class="status-<?php echo $statusInfoClass; ?>"><?php echo  $statusInfo; ?></span></td>
-    <td class="hide-mobile">2D 3D</td>
+    <td class="hide-mobile">
+        <?php if ($plan2d && $plan3d): ?>
+            <?php if ($plan2d): ?>
+                <a class="download-plan" href="<?php echo $plan2d; ?>" download="<?php the_title(); ?>-2d.jpg">2D</a>
+            <?php endif; ?>
+            <?php if ($plan3d): ?>
+                <a class="download-plan" href="<?php echo $plan3d; ?>" download="<?php the_title(); ?>-3d.jpg">3D</a>
+            <?php endif; ?>
+        <?php else: ?>
+            -
+        <?php endif; ?>
+    </td>
     <td><a href="<?php the_permalink(); ?>" class="price-btn">Zapytaj o cenę</a></td>
     <td class="hide-mobile">-</td>
     <td class="hide-mobile">

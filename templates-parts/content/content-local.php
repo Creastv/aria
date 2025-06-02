@@ -1,9 +1,4 @@
 <?php
-
-// get_field('nazwa_inwestycji', get_the_ID());
-// get_field('etap_inwestycji', get_the_ID());
-// get_field('numer_lokalu', get_the_ID());
-// get_field('nazwa_lokalu', get_the_ID());
 $budynek = get_field('budynek', get_the_ID());
 $floor = get_field('pietro', get_the_ID());
 $size = get_field('metraz', get_the_ID());
@@ -11,6 +6,7 @@ $rooms = get_field('pokoje', get_the_ID());
 $status = get_field('status', get_the_ID());
 $price = get_field('cena', get_the_ID());
 $plan = get_field('plan_mieszkania', get_the_ID());
+$balony = get_field('rozmiar_balkonu', get_the_ID());
 $statusInfo = "";
 $statusInfoClass = "";
 if ($status == 1) :
@@ -71,12 +67,14 @@ if ($floor == 0) {
             <?php endif; ?>
         </div>
         <div class="grid-item-card">
-            <div class="info-row">
-                <div class="info-label">BALKON/OGRÓDEK</div>
-                <div class="info-value">
-                    4.36 m²
+            <?php if (!empty($balony)) : ?>
+                <div class="info-row">
+                    <div class="info-label">BALKON/OGRÓDEK</div>
+                    <div class="info-value">
+                        <?php echo $balony; ?> m²
+                    </div>
                 </div>
-            </div>
+            <?php endif; ?>
             <?php if (!empty($status)) : ?>
                 <div class="info-row">
                     <div class="info-label ">STATUS</div>
