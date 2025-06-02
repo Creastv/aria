@@ -40,7 +40,7 @@ if ($floor == 0) {
     </td>
     <td><span class="status-<?php echo $statusInfoClass; ?>"><?php echo  $statusInfo; ?></span></td>
     <td class="hide-mobile">
-        <?php if ($plan2d && $plan3d): ?>
+        <?php if (!$plan2d && !$plan3d): ?>
             -
         <?php endif; ?>
         <?php if ($plan2d): ?>
