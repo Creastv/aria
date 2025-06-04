@@ -1,7 +1,5 @@
 <?php
 
-
-
 // home to Archive page lokale
 function filter_lokale_query($query)
 {
@@ -182,10 +180,6 @@ function ajax_filter_lokale()
         'pagination' => $pagination_html,
     ]);
 }
-
-
-
-
 add_action('wp_ajax_filter_lokale', 'ajax_filter_lokale');
 add_action('wp_ajax_nopriv_filter_lokale', 'ajax_filter_lokale');
 

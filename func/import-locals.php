@@ -1,8 +1,12 @@
 <?php
+
+// function import_lokale_links($id_inwestycji = null, $lokalizacja = null)
 function import_lokale_links()
 {
+    $id_inwestycji = 3;
+    $lokalizacja = 'Wieliszew';
     $key = '9a13d7dc-be11-4f74-a578-25faf50b7913';
-    $url = 'http://deweloperserwer.eu/scripts/getproducts.ashx?key=' . $key . '&ID_Investment=10&format=json';
+    $url = 'http://deweloperserwer.eu/scripts/getproducts.ashx?key=' . $key . '&ID_Investment=' . $id_inwestycji . '&format=json';
 
     $response = wp_remote_get($url, ['timeout' => 20]);
 
@@ -20,10 +24,7 @@ function import_lokale_links()
 
     foreach ($data['root']['Products']['Product'] as $lokal) {
         $crm_id = $lokal['ID_Product'];
-        $name = $lokal['ProductsKindTitle'];
-        if ($lokal['ProductsKindTitle'] == "Lokal mieszkalny") {
-            $name = "Mieszkanie";
-        }
+        $name = $lokal['ProductsKindTitle'] === "Lokal mieszkalny" ? "Mieszkanie" : $lokal['ProductsKindTitle'];
         $tytul =  $name . ' ' . $lokal['Number'];
 
         // Sprawdzenie, czy lokal już istnieje
@@ -46,9 +47,9 @@ function import_lokale_links()
         }
 
         $post_id = wp_insert_post([
-            'post_title' => $tytul,
-            'post_type' => 'lokale',
-            'post_status' => 'publish',
+            'post_title'   => $tytul,
+            'post_type'    => 'lokale',
+            'post_status'  => 'publish',
         ]);
 
         if (is_wp_error($post_id)) {
@@ -57,7 +58,7 @@ function import_lokale_links()
         }
 
         // Meta dane
-        update_field('lokalizacja', 'Legionowo', $post_id);
+        update_field('lokalizacja', $lokalizacja, $post_id);
         update_field('id_crm', $lokal['ID_Product'], $post_id);
         update_field('id_inwestycji', $lokal['ID_Investment'], $post_id);
         update_field('nazwa_inwestycji', $lokal['InvestmentTitle'], $post_id);
@@ -88,45 +89,91 @@ function import_lokale_links()
         } elseif (isset($supplements['ProductsKindTitle']) && $supplements['ProductsKindTitle'] === 'Balkon') {
             update_field('rozmiar_balkonu', $supplements['Area'], $post_id);
         }
-        // 2d
-        if (isset($lokal['Pictures'])) {
-            // 🔽 Pobieranie planu lokalu jako base64 i zapis do ACF
-            $plan_url = 'https://www.deweloperserwer.eu/scripts/showproduct.ashx?key=' . $key . '&ID_Product=' . $crm_id . '&FileKind=2&FileType=4';
-            $context = stream_context_create(['http' => ['timeout' => 5]]);
-            $plan_data = @file_get_contents($plan_url, false, $context);
 
-            if ($plan_data !== false && strlen($plan_data) > 100) {
-                $plan_base64 = 'data:image/jpeg;base64,' . base64_encode($plan_data);
-                update_field('rzut_2d', $plan_base64, $post_id);
-                echo "🖼️ Zapisano plan lokalu dla ID CRM: $crm_id<br>";
-            } else {
-                echo "⚠️ Brak planu lokalu lub nie można pobrać dla ID CRM: $crm_id<br>";
-            }
-        } else {
-            echo "⏭️ Pominięto pobieranie planu – brak pola 'Pictures' w danych lokalu (ID CRM: $crm_id)<br>";
-        }
-        // 3D
+        // Zdjęcia (2D/3D)
         if (isset($lokal['Pictures'])) {
-            // 🔽 Pobieranie planu lokalu jako base64 i zapis do ACF
-            $plan_url = 'https://www.deweloperserwer.eu/scripts/showproduct.ashx?key=' . $key . '&ID_Product=' . $crm_id . '&FileKind=2&FileType=21';
-            $context = stream_context_create(['http' => ['timeout' => 5]]);
-            $plan_data = @file_get_contents($plan_url, false, $context);
+            $upload_base = wp_upload_dir();
+            $upload_dir  = trailingslashit($upload_base['basedir']) . 'plany/';
+            $upload_url  = trailingslashit($upload_base['baseurl']) . 'plany/';
 
-            if ($plan_data !== false && strlen($plan_data) > 100) {
-                $plan_base64 = 'data:image/jpeg;base64,' . base64_encode($plan_data);
-                update_field('rzut_3d', $plan_base64, $post_id);
-                echo "🖼️ Zapisano plan lokalu dla ID CRM: $crm_id<br>";
-            } else {
-                echo "⚠️ Brak planu lokalu lub nie można pobrać dla ID CRM: $crm_id<br>";
+            if (!file_exists($upload_dir)) {
+                mkdir($upload_dir, 0755, true);
             }
-        } else {
-            echo "⏭️ Pominięto pobieranie planu – brak pola 'Pictures' w danych lokalu (ID CRM: $crm_id)<br>";
+
+            $context = stream_context_create(['http' => ['timeout' => 5]]);
+            $prefix = isset($lokal['InvestmentTitle']) ? sanitize_title($lokal['InvestmentTitle']) : 'inwestycja';
+
+            // 2D
+            $filename_2d = $prefix . '_plan_' . $crm_id . '.jpg';
+            $filepath_2d = $upload_dir . $filename_2d;
+            $fileurl_2d  = $upload_url . $filename_2d;
+            $plan2d_url = 'https://www.deweloperserwer.eu/scripts/showproduct.ashx?key=' . urlencode($key) .
+                '&ID_Product=' . urlencode($crm_id) . '&FileKind=2&FileType=4';
+            $plan2d_data = @file_get_contents($plan2d_url, false, $context);
+
+            if ($plan2d_data !== false && strlen($plan2d_data) > 100) {
+                $do_save_2d = true;
+
+                if (file_exists($filepath_2d)) {
+                    $existing_hash = md5_file($filepath_2d);
+                    $new_hash = md5($plan2d_data);
+                    if ($existing_hash === $new_hash) {
+                        $do_save_2d = false;
+                        echo "⏭️ RZUT 2D: Pominięto zapis – plik identyczny dla ID CRM: $crm_id<br>";
+                    }
+                }
+
+                if ($do_save_2d) {
+                    file_put_contents($filepath_2d, $plan2d_data);
+                    update_field('rzut_2d', $fileurl_2d, $post_id);
+                    echo "🖼️ RZUT 2D: Zapisano nowy plik dla ID CRM: $crm_id<br>";
+                }
+            } else {
+                echo "⚠️ RZUT 2D: Brak planu lub nie można pobrać dla ID CRM: $crm_id<br>";
+            }
+
+            // 3D
+            $filename_3d = $prefix . '_plan3d_' . $crm_id . '.jpg';
+            $filepath_3d = $upload_dir . $filename_3d;
+            $fileurl_3d  = $upload_url . $filename_3d;
+            $plan3d_url = 'https://www.deweloperserwer.eu/scripts/showproduct.ashx?key=' . urlencode($key) .
+                '&ID_Product=' . urlencode($crm_id) . '&FileKind=2&FileType=21';
+            $plan3d_data = @file_get_contents($plan3d_url, false, $context);
+
+            if ($plan3d_data !== false && strlen($plan3d_data) > 100) {
+                $do_save_3d = true;
+
+                if (file_exists($filepath_3d)) {
+                    $existing_hash = md5_file($filepath_3d);
+                    $new_hash = md5($plan3d_data);
+                    if ($existing_hash === $new_hash) {
+                        $do_save_3d = false;
+                        echo "⏭️ RZUT 3D: Pominięto zapis – plik identyczny dla ID CRM: $crm_id<br>";
+                    }
+                }
+
+                if ($do_save_3d) {
+                    file_put_contents($filepath_3d, $plan3d_data);
+                    update_field('rzut_3d', $fileurl_3d, $post_id);
+                    echo "🖼️ RZUT 3D: Zapisano nowy plik dla ID CRM: $crm_id<br>";
+                }
+            } else {
+                echo "⚠️ RZUT 3D: Brak planu lub nie można pobrać dla ID CRM: $crm_id<br>";
+            }
         }
     }
 
     echo '<br><strong>✅ Import zakończony!</strong>';
     exit;
 }
+
+// add_action('init', function () {
+//     if (isset($_GET['import_local']) && $_GET['import_local'] === '1') {
+//         $id_inwestycji = isset($_GET['id_inwestycji']) ? sanitize_text_field($_GET['id_inwestycji']) : null;
+//         $lokalizacja   = isset($_GET['lokalizacja']) ? sanitize_text_field($_GET['lokalizacja']) : null;
+//         import_lokale_links($id_inwestycji, $lokalizacja);
+//     }
+// });
 
 add_action('init', function () {
     if (isset($_GET['import_local']) && $_GET['import_local'] === '1') {
@@ -135,10 +182,11 @@ add_action('init', function () {
     }
 });
 
+
 // Odświerzanie lokali statusy
-// add_action('init', function () {
-//     aktualizuj_statusy_lokali_z_crm();
-// });
+add_action('init', function () {
+    aktualizuj_statusy_lokali_z_crm();
+});
 
 function aktualizuj_statusy_lokali_z_crm()
 {
