@@ -3,8 +3,8 @@
 // function import_lokale_links($id_inwestycji = null, $lokalizacja = null)
 function import_lokale_links()
 {
-    $id_inwestycji = 3;
-    $lokalizacja = 'Wieliszew';
+    $id_inwestycji = 10;
+    $lokalizacja = 'Legionowo';
     $key = '9a13d7dc-be11-4f74-a578-25faf50b7913';
     $url = 'http://deweloperserwer.eu/scripts/getproducts.ashx?key=' . $key . '&ID_Investment=' . $id_inwestycji . '&format=json';
 
