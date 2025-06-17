@@ -38,13 +38,14 @@ function enqueue_styles()
     wp_enqueue_style('news', $theme_uri  . '/assets/css/news.css');
     wp_enqueue_style('contact', $theme_uri  . '/assets/css/contact.css');
     wp_enqueue_style('footer', $theme_uri  . '/assets/css/footer.css');
-    // wp_enqueue_style('projekty', $theme_uri  . '/assets/css/projekty.css');
+
     wp_enqueue_style('expert', $theme_uri  . '/assets/css/expert.css');
     wp_enqueue_style('post', $theme_uri  . '/assets/css/post.css');
     wp_enqueue_style('search', $theme_uri  . '/assets/css/search.css');
 
 
     if (is_singular('lokale')):
+        wp_enqueue_style('projekty', $theme_uri  . '/assets/css/projekty.css');
         wp_enqueue_style('gallery', $theme_uri  . '/assets/css/gallery.css');
         wp_enqueue_style('single-local', $theme_uri  . '/assets/css/single-local.css');
     endif;
