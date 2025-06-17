@@ -25,9 +25,9 @@ $(document).ready(function () {
 // // Header Area
 $(document).ready(function () {
 
-  // Navbar scroll effect
+    // Navbar scroll effect
   $(window).scroll(function () {
-    $("header:not(.header-static)").each(function () {
+    $("header:not(.header-static):not(.no-title)").each(function () {
       if ($(window).scrollTop() > 35) {
         $(this).css("background-color", "rgba(255, 255, 255, 0.95)");
         $(this).addClass("shadow-sm");
@@ -37,6 +37,38 @@ $(document).ready(function () {
       }
     });
   });
+   // Navbar scroll effect + padding-top to body
+  function adjustBodyPadding() {
+    var header = $("header.no-title");
+
+    if (header.length) {
+      var headerHeight = header.outerHeight();
+      $("body").css("padding-top", headerHeight + "px");
+    }
+  }
+
+  $(document).ready(function () {
+    // Ustaw padding-top na start
+
+    // Zaktualizuj padding-top przy zmianie rozmiaru okna
+    $(window).on("resize", adjustBodyPadding);
+
+    // Efekt scrolla
+    $(window).scroll(function () {
+      $("header.no-title").each(function () {
+        if ($(window).scrollTop() > 35) {
+          $(this).css("background-color", "rgba(255, 255, 255, 0.95)");
+          $(this).addClass("shadow-sm");
+              adjustBodyPadding();
+        } else {
+          $(this).css("background-color", "transparent");
+          $(this).removeClass("shadow-sm");
+          $("body").css("padding-top", "0px");
+        }
+      });
+    });
+  });
+
 
   // Search functionality
   $(".search-toggle").on("click", function () {

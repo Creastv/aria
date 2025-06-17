@@ -185,25 +185,35 @@ jQuery(document).ready(function($) {
 
     function initDataTableIfExists() {
         if (jQuery.fn.DataTable && jQuery("#dataTable").length) {
+              let top = 124
+             if (window.innerWidth < 991) {
+                top = 69
+             }
             jQuery("#dataTable").DataTable({
                 paging: true,
                 lengthChange: false,
                 scrollX: true,
                 pageLength: 10,
-                searching: true,
+                searching: false,
                 ordering: true,
-                info: true,
+                info: false,
                 autoWidth: false,
+                fixedHeader: {
+                    header: true,
+                    headerOffset:  top
+                },
                 language: {
                     paginate: {
                         previous: '<span class="prev-icon">< Poprzednia</span>',
                         next: '<span class="next-icon">Następna > </span>',
                     },
                 },
-                columnDefs: [{
+                columnDefs: [
+                {
                     orderable: false,
-                    targets: [6, 7, 8, 9],
-                }],
+                    targets: [ 6, 7, 8, 9],
+                },
+            ],
             });
         }
     }

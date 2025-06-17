@@ -139,6 +139,8 @@ function register_acf_block_types()
     'keywords'          => array('filter-home'),
     'supports' => array('align' => true),
     'enqueue_assets'    => function () {
+      wp_enqueue_style('filter', get_template_directory_uri()  . '/assets/css/filters.css');
+      wp_enqueue_style('select2', get_template_directory_uri() . '/assets/css/plugins/select2.min.css');
       wp_enqueue_style('go-filter-home',  get_template_directory_uri() . '/blocks/filter-home/filter-home.min.css');
     },
   ));
@@ -157,7 +159,21 @@ function register_acf_block_types()
     'keywords'          => array('filter-inv'),
     'supports' => array('align' => true),
     'enqueue_assets'    => function () {
+      wp_enqueue_style('ion-range-slider', get_template_directory_uri()  . '/assets/css/plugins/ion.rangeSlider.min.css');
+      wp_enqueue_style('select2', get_template_directory_uri() . '/assets/css/plugins/select2.min.css');
+      wp_enqueue_style('table', get_template_directory_uri() . '/assets/css/table.css');
+      wp_enqueue_style('filter', get_template_directory_uri()  . '/assets/css/filters.css');
       wp_enqueue_style('go-filter-inv',  get_template_directory_uri() . '/blocks/filter-inv/filter-inv.min.css');
+      wp_enqueue_style('data-table', 'https://cdn.datatables.net/2.0.3/css/dataTables.dataTables.min.css');
+      wp_enqueue_style('data-table-fixed', 'https://cdn.datatables.net/fixedheader/4.0.1/css/fixedHeader.dataTables.min.css');
+      wp_enqueue_script('go-datatabel', 'https://cdn.datatables.net/2.0.3/js/dataTables.min.js', array('jquery'), '3', true);
+      wp_enqueue_script('go-datatable-fixed-header', 'https://cdn.datatables.net/fixedheader/4.0.1/js/dataTables.fixedHeader.min.js', array('jquery'), '3', true);
+      wp_enqueue_script('go-select2', get_template_directory_uri() . '/assets/js/plugins/select2.min.js', array('jquery'), '3', true);
+      wp_enqueue_script('go-range-slider', get_template_directory_uri() . '/assets/js/plugins/ion.rangeSlider.min.js', array('jquery'), '3', true);
+      wp_enqueue_script('go-archive-filters', get_template_directory_uri() . '/assets/js/archive-filters.js', array('jquery'), null, true);
+      wp_localize_script('go-archive-filters', 'ajax_vars', [
+        'ajax_url' => admin_url('admin-ajax.php')
+      ]);
     },
   ));
 

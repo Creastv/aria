@@ -31,6 +31,14 @@
   transition: 0.3s;
 }
 
+.admin-bar .sticky-top {
+top: 58px;
+}
+
+.admin-bar .sticky-top.shadow-sm{
+  top: 32px;
+}
+
 .header-main {
   /* min-height: 100vh; */
   /* overflow: hidden; */

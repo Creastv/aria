@@ -145,11 +145,8 @@ $nextxperts = get_field('dodatkowi_specjalisci', 'options');
                         $email = $expert['email'] ?? '';
                         $phone = $expert['nr_telefonu'] ?? '';
                     endif;
-
-
-
                 ?>
-                    <div class="col-xl-6 extra-specialists">
+                    <div class="col-xl-6  col-md-6 extra-specialists">
                         <div class="expert-box mrt-50">
                             <?php if ($title): ?>
                                 <h4><?php echo $title; ?></h4>
@@ -175,7 +172,21 @@ $nextxperts = get_field('dodatkowi_specjalisci', 'options');
                                             <?php endif; ?>
                                         </div><!-- /.expert-top-right -->
                                     </div><!-- /.expert-top -->
+
                                     <div class="expert-contact">
+                                        <?php if ($address): ?>
+                                            <span>
+                                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M3.33203 8.45307C3.33203 4.70522 6.3168 1.66699 9.9987 1.66699C13.6806 1.66699 16.6654 4.70522 16.6654 8.45307C16.6654 12.1715 14.5376 16.5107 11.2178 18.0624C10.4439 18.4241 9.55348 18.4241 8.77959 18.0624C5.4598 16.5107 3.33203 12.1715 3.33203 8.45307Z"
+                                                        stroke="#F08D0C" stroke-width="1.25"></path>
+                                                    <circle cx="10" cy="8.33301" r="2.5" stroke="#F08D0C" stroke-width="1.25">
+                                                    </circle>
+                                                </svg>
+                                                <?php echo $address; ?>
+                                            </span>
+                                        <?php endif; ?>
                                         <?php if ($phone): ?>
                                             <a href="tel:<?php echo $phone; ?>">
                                                 <svg width="20" height="21" viewBox="0 0 20 21" fill="none"
@@ -201,19 +212,7 @@ $nextxperts = get_field('dodatkowi_specjalisci', 'options');
                                                 <?php echo $email; ?>
                                             </a>
                                         <?php endif; ?>
-                                        <?php if ($address): ?>
-                                            <div class="expert-location">
-                                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path
-                                                        d="M3.33203 8.45307C3.33203 4.70522 6.3168 1.66699 9.9987 1.66699C13.6806 1.66699 16.6654 4.70522 16.6654 8.45307C16.6654 12.1715 14.5376 16.5107 11.2178 18.0624C10.4439 18.4241 9.55348 18.4241 8.77959 18.0624C5.4598 16.5107 3.33203 12.1715 3.33203 8.45307Z"
-                                                        stroke="#F08D0C" stroke-width="1.25"></path>
-                                                    <circle cx="10" cy="8.33301" r="2.5" stroke="#F08D0C" stroke-width="1.25">
-                                                    </circle>
-                                                </svg>
-                                                <?php echo $address; ?>
-                                            </div>
-                                        <?php endif; ?>
+
                                     </div>
                                 </div>
                                 <?php if ($avatar) : ?>
