@@ -11,35 +11,35 @@ if ($link):
 endif;
 ?>
 <?php if (!empty($slider)) : ?>
-    <!-- Hero Section with Slider -->
-    <section class="hero-section hero-section--project">
-        <div class="hero-slider">
-            <?php foreach ($slider as $slide) : ?>
-                <div class=" slider-item img go-parallex" style="background-image: url(<?php echo esc_url($slide['url']); ?>);">
-                </div>
-            <?php endforeach; ?>
+<!-- Hero Section with Slider -->
+<section class="hero-section hero-section--project">
+    <div class="hero-slider">
+        <?php foreach ($slider as $slide) : ?>
+        <div class=" slider-item img go-parallex" style="background-image: url(<?php echo esc_url($slide['url']); ?>);">
         </div>
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <div class="container">
-                <?php if ($title) : ?>
-                    <div>
-                        <?php echo wp_get_attachment_image($logo, "meddium"); ?>
-                    </div>
-                <?php endif; ?>
-                <?php if ($title) : ?>
-                    <h1><?php echo $title; ?></h1>
-                <?php endif; ?>
-                <?php if ($desc) : ?>
-                    <?php echo $desc; ?>
-                <?php endif; ?>
-                <?php if ($link): ?>
-                    <a class="bttn" href="<?php echo esc_url($link_url); ?>"
-                        target="<?php echo esc_attr($link_target); ?>"><span><?php echo esc_html($link_title); ?></span></a>
-                <?php endif; ?>
+        <?php endforeach; ?>
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <div class="container">
+            <?php if ($title) : ?>
+            <div>
+                <?php echo wp_get_attachment_image($logo, "gallery", false, array('class' => 'logo-hero', 'alt' => $title)); ?>
             </div>
+            <?php endif; ?>
+            <?php if ($title) : ?>
+            <h1><?php echo $title; ?></h1>
+            <?php endif; ?>
+            <?php if ($desc) : ?>
+            <?php echo $desc; ?>
+            <?php endif; ?>
+            <?php if ($link): ?>
+            <a class="bttn" href="<?php echo esc_url($link_url); ?>"
+                target="<?php echo esc_attr($link_target); ?>"><span><?php echo esc_html($link_title); ?></span></a>
+            <?php endif; ?>
         </div>
+    </div>
 
 
-    </section>
+</section>
 <?php endif; ?>
