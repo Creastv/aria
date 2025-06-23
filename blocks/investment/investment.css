@@ -40,6 +40,14 @@
   border-radius: 3px;
 }
 
+.investment-img .logo-investment {
+  max-width: 250px;
+}
+
+.investment-text .logo-investment-sm {
+  max-width: 150px;
+}
+
 .on-sale {
   position: absolute;
   top: 25px;
