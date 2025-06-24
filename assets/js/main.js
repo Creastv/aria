@@ -94,24 +94,24 @@ $(document).ready(function () {
   $(".mobile-menu-toggle").click(function () {
     $(".main-menu").toggleClass("active");
   });
-  // Search toggle
-  $(".search-toggle").click(function (e) {
-    e.preventDefault();
-    $(".search-container").addClass("active");
-    $(".search-input").focus();
-  });
+  // // Search toggle
+  // $(".search-toggle").click(function (e) {
+  //   e.preventDefault();
+  //   $(".search-container").addClass("active");
+  //   $(".search-input").focus();
+  // });
 
-  // Close search
-  $(".search-close").click(function () {
-    $(".search-container").removeClass("active");
-  });
+  // // Close search
+  // $(".search-close").click(function () {
+  //   $(".search-container").removeClass("active");
+  // });
 
-  // Close search on escape key
-  $(document).keyup(function (e) {
-    if (e.key === "Escape") {
-      $(".search-container").removeClass("active");
-    }
-  });
+  // // Close search on escape key
+  // $(document).keyup(function (e) {
+  //   if (e.key === "Escape") {
+  //     $(".search-container").removeClass("active");
+  //   }
+  // });
 });
 
 
