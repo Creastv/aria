@@ -11,6 +11,12 @@ $slider = get_field('slider');
                 $label = $slide['etykieta'];
                 $title = $slide['tytul'];
                 $desc = $slide['opis'];
+                $link = $slide['link'];
+                if ($link):
+                    $link_url = $link['url'];
+                    $link_title = $link['title'];
+                    $link_target = $link['target'] ? $link['target'] : '_self';
+                endif;
             ?>
                 <div class="slider-item go-parallex" style="background-image: url(<?php echo $img; ?>);">
                     <div class="hero-overlay"></div>
@@ -23,6 +29,12 @@ $slider = get_field('slider');
                         <?php endif; ?>
                         <?php if (!empty($desc)) : ?>
                             <p><?php echo $desc; ?></p>
+                        <?php endif; ?>
+                        <?php if (!empty($link)) : ?>
+                            <div class="b">
+                                <a class="bttn" href="<?php echo esc_url($link_url); ?>"
+                                    target="<?php echo esc_attr($link_target); ?>"><?php echo esc_html($link_title); ?></a>
+                            </div>
                         <?php endif; ?>
                         <div class="slider-controls-area">
 
