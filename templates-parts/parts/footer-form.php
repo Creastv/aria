@@ -1,35 +1,34 @@
-<form action="#">
+<!-- <form action="#">
     <div class="row">
         <div class="col">
             <div class="single-form">
                 <label for="#">Imię i nazwisko</label>
                 <input type="text" placeholder="Twoje imię i nazwisko">
-            </div><!-- /.single-form -->
-        </div><!-- /.col -->
-    </div><!-- /.row -->
+            </div>
+        </div>
+    </div>
     <div class="row">
         <div class="col">
             <div class="single-form">
                 <label for="#">Imię i nazwisko</label>
                 <input type="text" placeholder="Twoje imię i nazwisko">
-            </div><!-- /.single-form -->
-        </div><!-- /.col -->
+            </div>
+        </div>
         <div class="col">
             <div class="single-form">
                 <label for="#">Imię i nazwisko</label>
                 <input type="text" placeholder="Twoje imię i nazwisko">
-            </div><!-- /.single-form -->
-        </div><!-- /.col -->
-    </div><!-- /.row -->
+            </div>
+        </div>
+    </div>
     <div class="row">
         <div class="col">
             <div class="text-area">
                 <label for="#">Wiadomość</label>
                 <textarea name="#" id="#" placeholder="W czym możemy Ci pomóc?"></textarea>
-                <!-- /# -->
-            </div><!-- /.text-area -->
-        </div><!-- /.col -->
-    </div><!-- /.row -->
+            </div>
+        </div>
+    </div>
     <p>Przed wyrażeniem poniższych zgód zapoznaj się z informacjami o przetwarzaniu danych
         osobowych klikając <a href="#">Tutaj.</a></p>
     <div class="checkbox">
@@ -41,7 +40,8 @@
         </div>
         <div class="form-group">
             <input type="checkbox" id="checkbox-2">
-            <label for="checkbox-2">Wyrażam zgodę na kontakt przez Aria 3 Development Spółka z Ograniczoną Odpowiedzialnością, Sp. K za pomocą telekomunikacyjnych urządzeń końcowych i
+            <label for="checkbox-2">Wyrażam zgodę na kontakt przez Aria 3 Development Spółka z Ograniczoną
+                Odpowiedzialnością, Sp. K za pomocą telekomunikacyjnych urządzeń końcowych i
                 automatycznych systemów wywołujących (telefon, e-mail) zgodnie z ustawą Prawo
                 telekomunikacyjne z 16 lipca 2014 r.</label>
         </div>
@@ -52,7 +52,8 @@
                 zgodnie z ustawą o świadczeniu usług drogą elektroniczną z 18 lipca 2002
                 r.</label>
         </div>
-
-    </div><!-- /.checkbox -->
+    </div>
     <button type="submit" class="bttn">Wyślij wiadomość</button>
-</form>
+</form> -->
+
+<?php echo do_shortcode('[contact-form-7 id="29be4c4" title="Zapytanie o mieszkanie"]'); ?>
